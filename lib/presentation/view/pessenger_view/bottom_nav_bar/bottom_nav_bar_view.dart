@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../../configuration/frontend_configs.dart';
 import '../chat_details/chat_view.dart';
@@ -8,7 +9,7 @@ import '../profile/profile_view.dart';
 import '../wallet/wallet_view.dart';
 
 class BottomNavBarView extends StatefulWidget {
-  const BottomNavBarView({Key? key}) : super(key: key);
+  const  BottomNavBarView({Key? key}) : super(key: key);
 
   @override
   _BottomNavBarViewState createState() => _BottomNavBarViewState();
@@ -22,6 +23,16 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
     const WalletView(),
     const ProfileView()
   ];
+  @override
+  void initState() async {
+    super.initState();
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.location,
+      Permission.storage,
+    ].request();
+    print(statuses[Permission.location]);
+    print(statuses[Permission.storage]);
+  }
 
   // void onTabTapped(int index, BuildContext context) {
   //   // var bottomIndex = Provider.of<BottomIndexProvider>(context, listen: false);

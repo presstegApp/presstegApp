@@ -29,6 +29,8 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
+    var w = MediaQuery.of(context).size.width;
     return SizedBox(
       height: 49,
       child: TextFormField(

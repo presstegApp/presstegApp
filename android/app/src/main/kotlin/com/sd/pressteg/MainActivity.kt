@@ -1,4 +1,4 @@
-package com.example.pressteg
+package com.sd.pressteg
 
 import io.flutter.embedding.android.FlutterActivity
 
