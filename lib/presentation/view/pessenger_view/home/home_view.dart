@@ -112,6 +112,7 @@ class HomeViewState extends State<HomeView> {
     //   target: LatLng(currentLocation!.latitude, currentLocation!.longitude),
     //   // tilt: 59.440717697143555,
     //   // zoom: 1.0
+    var userNewLocation;
     // );
     print("main ${location}");
     marker = Marker(
@@ -130,7 +131,11 @@ class HomeViewState extends State<HomeView> {
           mapType: MapType.normal,
           mapToolbarEnabled: false,
           markers: {marker!},
-          onCameraMoveStarted: moveCamera,
+          onCameraMove: (position) {
+            setState(() {
+              userNewLocation = position.target;
+            });
+          },
           initialCameraPosition: CameraPosition(target: lat, zoom: 14),
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
