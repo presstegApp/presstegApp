@@ -14,6 +14,7 @@ import '/presentation/view/splash_screen/layout/body.dart';
 import '/presentation/view/splash_screen/splash_view.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(fontFamily: "Poppins"),

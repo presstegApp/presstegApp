@@ -9,7 +9,7 @@ import '../profile/profile_view.dart';
 import '../wallet/wallet_view.dart';
 
 class BottomNavBarView extends StatefulWidget {
-  const  BottomNavBarView({Key? key}) : super(key: key);
+  const BottomNavBarView({Key? key}) : super(key: key);
 
   @override
   _BottomNavBarViewState createState() => _BottomNavBarViewState();
@@ -24,14 +24,9 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
     const ProfileView()
   ];
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.location,
-      Permission.storage,
-    ].request();
-    print(statuses[Permission.location]);
-    print(statuses[Permission.storage]);
+    checkPremission();
   }
 
   // void onTabTapped(int index, BuildContext context) {
@@ -127,5 +122,14 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
         ],
       ),
     );
+  }
+
+  void checkPremission() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.location,
+      Permission.storage,
+    ].request();
+    print(statuses[Permission.location]);
+    print(statuses[Permission.storage]);
   }
 }
